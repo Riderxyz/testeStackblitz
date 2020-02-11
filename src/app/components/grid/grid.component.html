@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="card-header card-header-primary">
+    <h4 class="card-title">Lista de artigos</h4>
+
+    <div class="buttons-control">
+      <button
+        mat-raised-button
+        class="btn btn-success"
+        (click)="addNewItem()"
+      >
+        <i class="material-icons">add</i>
+      </button>
+      <button
+        mat-raised-button
+        class="btn btn-danger"
+        (click)="deleteItem()"
+        [disabled]="!(selectedRows.length > 0)"
+      >
+        <i class="material-icons">remove</i>
+      </button>
+      <button
+        mat-raised-button
+        class="btn btn-warning"
+        (click)="editItem()"
+        [disabled]="!allowEdit"
+      >
+        <i class="material-icons">edit</i>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <mat-form-field appearance="outline">
+      <mat-label>Digite algo para pesquisar</mat-label>
+      <input
+        (ngModelChange)="startFilter($event)"
+        [(ngModel)]="filtro"
+        name="header-search"
+        type="search"
+        matInput
+      />
+    </mat-form-field>
+    <ag-grid-angular
+      id="GridDimensionado"
+      style="height: calc(60vh - 20px);width: 100%;"
+      class="ag-theme-balham"
+      [gridOptions]="gridOptions"
+    >
+    </ag-grid-angular>
+  </div>
+</div>

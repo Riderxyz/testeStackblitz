@@ -1,0 +1,23 @@
+.card{
+  font-family: Exo;
+  .card-header {
+    display: flex;
+    font-family: Exo !important;
+    justify-content: space-between;
+    align-items: center;
+
+
+
+    .buttons-control {
+      width: 40%;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+}
+
+::ng-deep .mat-label {
+ // color: white;
+  font-weight: bold !important;
+}

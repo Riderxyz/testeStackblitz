@@ -1,0 +1,146 @@
+<div class="card card-modal-cadastro ">
+  <div class="card-header card-header-success" mat-dialog-title>
+    <span class="card-header-title" id="title">
+    </span>
+  </div>
+  <div class="card-body" mat-dialog-content>
+    <form
+      #ModalCadastroForm="ngForm"
+      id="ngForm"
+      (ngSubmit)="ModalCadastroForm.valid && save(ModalCadastroForm)"
+    >
+      <div class="p-grid p-justify-between">
+        <div class="p-col-12 p-md-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Titulo</mat-label>
+            <input
+              [(ngModel)]="modalValues.titulo"
+              #ModalValueTitulo="ngModel"
+              matInput
+              name="modalCadastro-titulo"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="p-col-12 p-md-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Subtitulo</mat-label>
+            <input
+              [(ngModel)]="modalValues.subTitulo"
+              #ModalValueSubTitulo="ngModel"
+              matInput
+              name="modalCadastro-subTitulo"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="p-col-12">
+          <mat-form-field appearance="outline">
+            <mat-label>Texto</mat-label>
+            <textarea
+              [(ngModel)]="modalValues.texto"
+              #ModalValueTexto="ngModel"
+              matInput
+              name="modalCadastro-descrição"
+              required
+            >
+            </textarea>
+          </mat-form-field>
+        </div>
+        <div class="p-col-12 p-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Data</mat-label>
+            <input
+              matInput
+              [(ngModel)]="modalValues.data"
+              [matDatepicker]="picker"
+              #ModalValueData="ngModel"
+              name="modalCadastro-data"
+              required
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="p-col-12 p-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Link para Imagem</mat-label>
+            <input
+              [(ngModel)]="modalValues.imageLink"
+              #ModalValueImageLink="ngModel"
+              matInput
+              name="modalCadastro-imageLink"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="p-col-12 p-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Autor</mat-label>
+            <input
+              [(ngModel)]="modalValues.autor"
+              #ModalValueAutor="ngModel"
+              matInput
+              name="modalCadastro-autor"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="p-col-12">
+          <div class="p-grid " [class.p-dir-col-rev]="onSugestComentarioFocus">
+            <div [class]="colTextAreas.comentario">
+              <mat-form-field appearance="outline">
+                <mat-label>Comentario</mat-label>
+                <textarea
+                  (focus)="expandTextArea('ModalValueComentario')"
+                  (focusout)="closeTextArea('ModalValueComentario')"
+                  [(ngModel)]="modalValues.comentario"
+                  #ModalValueComentario="ngModel"
+                  matInput
+                  name="modalCadastro-comentario"
+                >
+                </textarea>
+              </mat-form-field>
+            </div>
+            <div [class]="colTextAreas.sugestaoComentario">
+              <mat-form-field appearance="outline">
+                <mat-label>Sugestão de Comentario</mat-label>
+                <textarea
+                  (focus)="expandTextArea('ModalValueSugestaoComentario')"
+                  (focusout)="closeTextArea('ModalValueSugestaoComentario')"
+                  [(ngModel)]="modalValues.sugestaoComentario"
+                  #ModalValueSugestaoComentario="ngModel"
+                  matInput
+                  name="modalCadastro-sugestaoComentario"
+                >
+                </textarea>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="p-col-12">
+          <mat-form-field appearance="outline">
+            <mat-label>Url Original</mat-label>
+            <input
+              [(ngModel)]="modalValues.urlOriginal"
+              #ModalValueUrlOriginal="ngModel"
+              matInput
+              name="modalCadastro-urlOriginal"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="card-footer" mat-dialog-actions>
+    <button mat-raised-button class="btn btn-danger" mat-dialog-close>
+      Cancelar
+    </button>
+    <button mat-raised-button class="btn btn-success" form="ngForm">
+      Incluir
+    </button>
+  </div>
+</div>
